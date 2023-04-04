@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BoardColumnCreateController;
+use App\Http\Controllers\BoardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +38,8 @@ Route::middleware('auth')->group(function () {
 
     // Board
     Route::get('/boards/{board}', [BoardController::class, 'show'])->name('boards');
+    Route::post('/boards/{board}/columns', BoardColumnCreateController::class)
+        ->name('boards.columns.store');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
