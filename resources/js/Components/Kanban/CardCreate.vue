@@ -67,7 +67,7 @@ const onSubmit = () => {
 };
 const showForm = async () => {
     isCreating.value = true;
-    await nextTick(); // wait for form to be rendered
+    await nextTick();
     inputCardContentRef.value.focus();
 };
 </script>

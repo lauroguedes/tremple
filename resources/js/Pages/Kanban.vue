@@ -4,7 +4,7 @@
     </Head>
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-black text-2xl text-gray-800 leading-tight">
+            <h2 class="font-black text-2xl text-gray-800 dark:text-gray-400 leading-tight">
                 {{ boardTitle }}
             </h2>
         </template>
@@ -21,7 +21,7 @@
                         @reorder-commit="onReorderCommit"
                     />
                     <div class="w-72">
-                        <ColumnCreate :board="board.data" />
+                        <ColumnCreate :board="board?.data" />
                     </div>
                 </div>
             </div>

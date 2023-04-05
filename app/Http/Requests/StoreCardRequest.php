@@ -11,7 +11,7 @@ class StoreCardRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,14 @@ class StoreCardRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'content' => ['required', 'min:5', 'max:50'],
         ];
+    }
+
+    public function prepareForValidation()
+    {
+        return $this->merge([
+            'column_id' => $this->column?->id,
+        ]);
     }
 }
