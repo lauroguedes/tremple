@@ -23,7 +23,7 @@ class CardsReorderUpdateRequest extends FormRequest
     {
         return [
             'columns.*.id' => ['integer', 'required', 'exists:\App\Models\Column,id'],
-            'columns.*.cards' => ['required', 'array'],
+            'columns.*.cards' => ['array'],
             'columns.*.cards.*.id' => ['required', 'integer', 'exists:\App\Models\Card,id'],
             'columns.*.cards.*.position' => ['numeric', 'required'],
         ];

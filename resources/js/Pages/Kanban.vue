@@ -48,8 +48,11 @@ const onReorderCommit = () => {
     if (!columnsWithOrder?.value?.length) {
         return;
     }
+
     router.put(route("cards.reorder"), {
         columns: columnsWithOrder.value,
     });
+
+    columnsWithOrder.value.length = 0
 };
 </script>

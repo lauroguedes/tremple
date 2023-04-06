@@ -90,6 +90,7 @@ const onReorderCards = () => {
             position: index * 1000 + 1000,
         })),
     ];
+
     emit("reorder-change", {
         id: props?.column?.id,
         cards: cardsWithOrder,
