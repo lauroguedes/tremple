@@ -1,9 +1,9 @@
 <template>
     <Menu as="div" class="relative z-50">
         <MenuButton
-            class="hover:bg-gray-300 rounded-md w-8 h-8 grid place-items-center"
+            class="hover:bg-gray-300 dark:hover:bg-gray-500 rounded-md w-8 h-8 grid place-items-center"
         >
-            <EllipsisHorizontalIcon class="h-5 w-5" />
+            <EllipsisHorizontalIcon class="h-5 w-5 dark:text-gray-300" />
         </MenuButton>
         <transition
             enter-active-class="transition transform duration-100 ease-out"
@@ -14,7 +14,7 @@
             leave-to-class="opacity-0 scale-90"
         >
             <MenuItems
-                class="origin-top-left mt-2 focus:outline-none absolute left-0 bg-white overflow-hidden rounded-md shadow-lg border w-48"
+                class="origin-top-left mt-2 focus:outline-none absolute left-0 bg-white dark:bg-gray-300 overflow-hidden rounded-md shadow-lg border w-48"
             >
                 <MenuItem v-for="menu in menuItems" v-slot="{ active }">
                     <a

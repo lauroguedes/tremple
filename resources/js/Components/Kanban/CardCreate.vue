@@ -12,7 +12,7 @@
                 placeholder="Card content ..."
                 ref="inputCardContentRef"
                 rows="3"
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 shadow-sm sm:text-sm"
             >
             </textarea>
             <div class="mt-2 space-x-2">
@@ -25,7 +25,7 @@
                 <button
                     @click.prevent="isCreating = false"
                     type="button"
-                    class="inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-gray-700 hover:text-black focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    class="inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 >
                     Cancel
                 </button>
@@ -35,7 +35,7 @@
             v-if="!isCreating"
             @click.prevent="showForm"
             type="button"
-            class="flex items-center p-2 text-sm rounded-md font-medium bg-gray-200 text-gray-600 hover:text-black hover:bg-gray-300 w-full"
+            class="flex items-center p-2 text-sm rounded-md font-medium bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-800 text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-gray-500 w-full"
         >
             <PlusIcon class="w-5 h-5" />
             <span class="ml-1">Add card</span>

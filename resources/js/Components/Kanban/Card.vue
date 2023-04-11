@@ -1,6 +1,6 @@
 <template>
     <div
-        class="cursor-move relative group p-2 bg-white shadow rounded-md border border-b border-gray-300 hover:bg-gray-50"
+        class="cursor-move relative group p-2 bg-white dark:bg-gray-400 shadow rounded-md border border-b border-gray-30 dark:border-gray-400 hover:opacity-90"
     >
         <form
             v-if="isEditing"
@@ -40,13 +40,13 @@
             >
                 <button
                     @click.prevent="showForm"
-                    class="w-8 h-8 bg-gray-50 text-gray-600 hover:text-black hover:bg-gray-200 rounded-md grid place-content-center"
+                    class="w-8 h-8 bg-gray-50 dark:bg-gray-400 text-gray-600 hover:text-black hover:bg-gray-200 dark:hover:bg-gray-500 rounded-md grid place-content-center"
                 >
                     <PencilIcon class="w-5 h-5" />
                 </button>
                 <button
                     @click.prevent="openModal"
-                    class="w-8 h-8 bg-gray-50 text-red-600 hover:text-red-700 hover:bg-gray-200 rounded-md grid place-content-center"
+                    class="w-8 h-8 bg-gray-50 dark:bg-gray-400 text-red-600 hover:text-red-700 hover:bg-gray-200 dark:hover:bg-gray-500 rounded-md grid place-content-center"
                 >
                     <TrashIcon class="w-5 h-5" />
                 </button>

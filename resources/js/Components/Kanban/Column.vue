@@ -1,7 +1,9 @@
 <template>
-    <div class="w-72 max-h-full bg-gray-200 flex flex-col rounded-md">
+    <div
+        class="w-72 max-h-full bg-gray-200 dark:bg-gray-700 flex flex-col rounded-md"
+    >
         <div class="flex items-center justify-between px-3 py-2">
-            <h3 class="font-semibold text-sm text-gray-700">
+            <h3 class="font-semibold text-md text-gray-700 dark:text-gray-300">
                 {{ columnTitle }}
             </h3>
             <MenuDropDown :menuItems="menuItems" />
