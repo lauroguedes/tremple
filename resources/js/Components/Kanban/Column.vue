@@ -27,9 +27,7 @@
                         </li>
                     </template>
                 </Draggable>
-                <div class="px-3 mt-3">
-                    <CardCreate :column="column" @created="onCardCreated" />
-                </div>
+                <CardCreate :column="column" @created="onCardCreated" />
             </div>
         </div>
     </div>

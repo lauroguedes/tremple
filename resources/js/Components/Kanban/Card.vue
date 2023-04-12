@@ -7,30 +7,23 @@
             @keydown.esc="onCancel"
             @submit.prevent="onSubmit"
         >
-            <textarea
+            <TextArea
                 v-model="form.content"
                 type="text"
                 @keydown.enter.prevent="onSubmit"
                 placeholder="Card content ..."
                 ref="inputCardContentRef"
                 rows="3"
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                class="mt-1 block w-full"
             >
-            </textarea>
+            </TextArea>
             <div class="mt-2 space-x-2">
-                <button
-                    type="submit"
-                    class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                >
+                <PrimaryButton :disabled="!form.content" type="submit">
                     Save card
-                </button>
-                <button
-                    @click.prevent="onCancel"
-                    type="button"
-                    class="inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-gray-700 hover:text-black focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                >
+                </PrimaryButton>
+                <SecondaryButton @click.prevent="onCancel">
                     Cancel
-                </button>
+                </SecondaryButton>
             </div>
         </form>
         <div v-else>
@@ -68,6 +61,10 @@ import { PencilIcon } from "@heroicons/vue/24/solid";
 import { TrashIcon } from "@heroicons/vue/24/solid";
 import { useEditCard } from "@/Composables/useEditCard";
 import ConfirmDialog from "@/Components/Kanban/ConfirmDialog.vue";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
+import SecondaryButton from "@/Components/SecondaryButton.vue";
+import TextArea from "@/Components/TextArea.vue";
+
 const props = defineProps({
     card: Object,
 });

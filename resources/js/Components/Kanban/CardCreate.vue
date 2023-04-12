@@ -1,34 +1,28 @@
 <template>
-    <div>
+    <div class="mt-3">
         <form
             v-if="isCreating"
             @keydown.esc="isCreating = false"
             @submit.prevent="onSubmit"
         >
-            <textarea
+            <TextArea
                 v-model="form.content"
                 type="text"
                 @keydown.enter.prevent="onSubmit"
                 placeholder="Card content ..."
                 ref="inputCardContentRef"
                 rows="3"
-                class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 shadow-sm sm:text-sm"
+                class="w-full"
             >
-            </textarea>
+            </TextArea>
+            <InputError :message="form.errors.content" />
             <div class="mt-2 space-x-2">
-                <button
-                    type="submit"
-                    class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                >
+                <PrimaryButton :disabled="!form.content" type="submit">
                     Add card
-                </button>
-                <button
-                    @click.prevent="isCreating = false"
-                    type="button"
-                    class="inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                >
+                </PrimaryButton>
+                <SecondaryButton @click.prevent="isCreating = false">
                     Cancel
-                </button>
+                </SecondaryButton>
             </div>
         </form>
         <button
@@ -47,6 +41,11 @@
 import { nextTick, ref } from "vue";
 import { useForm } from "@inertiajs/vue3";
 import { PlusIcon } from "@heroicons/vue/24/solid";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
+import SecondaryButton from "@/Components/SecondaryButton.vue";
+import TextArea from "@/Components/TextArea.vue";
+import InputError from "@/Components/InputError.vue";
+
 const props = defineProps({
     column: Object,
 });
