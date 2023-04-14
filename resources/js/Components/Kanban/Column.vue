@@ -32,8 +32,8 @@
         </div>
     </div>
     <ConfirmDialog
-        :show="isOpen"
-        @confirm="closeModal($event)"
+        :show="isOpenModal"
+        @confirm="handleDestroy($event)"
         title="Remove Column"
         message="Are you sure you want to delete this column and all its cards?"
     />
@@ -48,6 +48,8 @@ import Card from "@/Components/Kanban/Card.vue";
 import CardCreate from "@/Components/Kanban/CardCreate.vue";
 import ConfirmDialog from "@/Components/Kanban/ConfirmDialog.vue";
 import MenuDropDown from "@/Components/Kanban/MenuDropDown.vue";
+import { useModal } from "@/Composables/useModal";
+
 const props = defineProps({
     board: Number,
     column: Object,
@@ -55,22 +57,22 @@ const props = defineProps({
 const emit = defineEmits(["reorder-commit", "reorder-change"]);
 const columnTitle = computed(() => props.column?.title);
 const cards = ref(props?.column?.cards);
-const latestCards = computed(() => props?.column?.cards);
 const cardsRef = ref();
 // Keep the cards up-to-date
 watch(
     () => props?.column,
     () => (cards.value = props?.column?.cards)
 );
-// TODO: Move to composable useModal
-const isOpen = ref(false);
-const closeModal = (confirm) => {
-    isOpen.value = false;
+
+const { isOpenModal, openModal, closeModal } = useModal();
+
+const handleDestroy = (confirm) => {
+    closeModal();
     if (confirm) {
         router.delete(route("columns.destroy", { column: props?.column?.id }));
     }
 };
-const openModal = () => (isOpen.value = true);
+
 const onCardCreated = async () => {
     // scroll to the bottom of the list
     await nextTick();

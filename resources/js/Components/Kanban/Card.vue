@@ -47,8 +47,8 @@
         </div>
     </div>
     <ConfirmDialog
-        :show="isOpen"
-        @confirm="closeModal($event)"
+        :show="isOpenModal"
+        @confirm="handleDestroy($event)"
         title="Remove Card"
         message="Are you sure you want to delete this card?"
     />
@@ -64,14 +64,16 @@ import ConfirmDialog from "@/Components/Kanban/ConfirmDialog.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 import TextArea from "@/Components/TextArea.vue";
+import { useModal } from "@/Composables/useModal";
 
 const props = defineProps({
     card: Object,
 });
-// TODO: Move to composable useModal
-const isOpen = ref(false);
-const closeModal = (confirm) => {
-    isOpen.value = false;
+
+const { isOpenModal, openModal, closeModal } = useModal();
+
+const handleDestroy = (confirm) => {
+    closeModal();
     if (confirm) {
         router.delete(
             route("columns.cards.destroy", {
@@ -81,7 +83,6 @@ const closeModal = (confirm) => {
         );
     }
 };
-const openModal = () => (isOpen.value = true);
 const form = useForm({
     content: props?.card?.content,
 });
