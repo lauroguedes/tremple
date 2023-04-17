@@ -2,8 +2,6 @@
 
 A simple Kanban board project build with [Laravel](https://laravel.com/) + [Inertia JS](https://inertiajs.com/). This project was based in an article written to the [Laravel News](https://laravel-news.com/building-a-kanban-board-with-laravel) blog.
 
-![Demo](demo.mp4)
-
 ### Tech Stack
 - Laravel
 - Inertia JS
