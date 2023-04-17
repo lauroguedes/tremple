@@ -102,3 +102,9 @@ const onReorderEnds = () => {
     emit("reorder-commit");
 };
 </script>
+
+<style scoped>
+.ghost {
+    @apply opacity-25;
+}
+</style>
